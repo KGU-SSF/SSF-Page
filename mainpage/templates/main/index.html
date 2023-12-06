@@ -5,9 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>S.S.F</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../../static/../../static/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="http://ssf.or.kr/files/attach/images/44550/422ab08162e3ac03a87a678c7a0a6a79.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -200,6 +200,16 @@
                         </div>
                     </li>
                     <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="https://www.ajou.ac.kr/_resources/_upload_image/2016-09/kbgrujijkvpt.png" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>2014년</h4>
+                                <h4 class="subheading">프로그래밍 대회 진행</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">S.S.F에서 컴퓨터과학과 프로그래밍 대회 문제를<br> 출제하고 진행했어요!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="https://previews.123rf.com/images/creativepriyanka/creativepriyanka2204/creativepriyanka220402259/185500064-%EC%9E%A5%EC%A0%90-%EC%9E%90%EA%B2%A9-%EC%95%84%EC%9D%B4%EC%BD%98.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
@@ -207,16 +217,6 @@
                                 <h4 class="subheading">SQLD 자격증 취득</h4>
                             </div>
                             <div class="timeline-body"><p class="text-muted">S.S.F 내에서 SQLD 자격증반을 개설하여 6명이 취득했어요!</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="https://media.istockphoto.com/id/1147054910/ko/%EB%B2%A1%ED%84%B0/%EB%B2%A1%ED%84%B0-%ED%8C%80-%EC%96%91%EC%8B%9D%EC%97%90-%EC%9D%BC%EC%B9%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%A7%8E%EC%9D%80-%EC%82%AC%EB%9E%8C%EB%93%A4%EC%9D%B4-%EC%84%9C%EB%AA%85-%EA%B2%80%EC%9D%80-%EA%B7%B8%EB%A6%BC-%EC%A0%88%EC%97%B0.jpg?s=612x612&w=0&k=20&c=4JWAwuuEEd1PA9mS599EHj9CfQJpjKSB_OvDqJGJ8Ls=" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>2023년</h4>
-                                <h4 class="subheading">대규모 동아리</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">2023년도 S.S.F는 부원 수 100명 이상으로 역대 최대 부원 수를 달성했어요!</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
@@ -310,53 +310,60 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <form action="{% url 'datatest' %}" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    {% csrf_token %}
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- Name input-->
-                                <input class="form-control" id="name" type="text" placeholder="이름을 작성해주세요." data-sb-validations="required" />
+                                <input class="form-control" id="name" type="text" name="name" placeholder="이름을 작성해주세요." data-sb-validations="required" />
                                 <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                             </div>
                             <div class="form-group">
                                 <!-- Email address input-->
-                                <input class="form-control" id="email" type="email" placeholder="학번을 작성해주세요." data-sb-validations="required,email" />
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                <input class="form-control" id="studentID" name="email" type="number" placeholder="학번을 작성해주세요." data-sb-validations="required,email" maxlength="9"/>
                             </div>
                             <div class="form-group mb-md-0">
                                 <!-- Phone number input-->
-                                <input class="form-control" id="phone" type="tel" placeholder="핸드폰 번호를 작성해주세요." data-sb-validations="required" />
+                                <input class="form-control" id="phoneNumber" name="phone" type="tel" placeholder="핸드폰 번호를 작성해주세요.('-' 는 제외)" data-sb-validations="required" maxlength="11"/>
                                 <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-group-textarea mb-md-0">
                                 <!-- Message input-->
-                                <textarea class="form-control" id="message" placeholder="간단한 포부 및 지원동기를 작성해주세요." data-sb-validations="required"></textarea>
+                                <textarea class="form-control" id="message" name="message" placeholder="간단한 포부 및 지원동기를 작성해주세요." data-sb-validations="required"></textarea>
                                 <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                             </div>
                         </div>
                     </div>
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center text-white mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                        </div>
-                    </div>
-                    <!-- Submit error message-->
-                    <!---->
-                    <!-- This is what your users will see when there is-->
-                    <!-- an error submitting the form-->
                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                     <!-- Submit Button-->
-                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">지원하기</button></div>
+                    <input id="submitButton" onclick="doAction()" type="submit" value="지원하기", style="padding: 12px; background-color: #ffc800; border-radius: 10px; border-color: #ffc800;">지원하기</input>
+                    <script>
+                        function doAction() {
+                            const name = document.getElementById('name').value;
+                            const studentID = document.getElementById('studentID').value;
+                            const phoneNumber = document.getElementById('phoneNumber').value;
+                            const message = document.getElementById('message').value;
+
+                            if (name == '') {
+                                alert("이름을 입력하세요.");
+                            } else if (studentID = '')
+                            {
+                                alert('학번을 입력하세요.');
+                            } else if (phoneNumber == '')
+                            {
+                                alert('전화번호를 입력하세요.');
+                            } else if (message == '')
+                            {
+                                alert('마지막 할말 및 포부를 입력해주세요.');
+                            } else
+                            {
+                                alert("지원이 완료되었습니다. \n지원해주셔서 감사합니다.");
+                            }
+                        }  
+                      </script>
                 </form>
             </div>
         </section>
